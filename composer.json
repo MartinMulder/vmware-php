@@ -1,0 +1,27 @@
+{
+    "name": "martinmulder/vmware-api",
+    "description": "A PHP implementation for the VMWare API",
+    "keywords": [
+        "vmware",
+	"vcenter",
+        "api",
+        "martinmulder"
+    ],
+    "homepage": "https://github.com/MartinMulder/vmware-php",
+    "license": "MIT",
+    "require": {
+        "php": "7.*",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MartinMulder\\VMWare\\": "src"
+        }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "sort-packages": true
+    },
+    "prefer-stable": true
+}
