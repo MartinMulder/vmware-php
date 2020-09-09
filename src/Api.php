@@ -27,7 +27,7 @@ abstract class Api
     /** @var integer */
     protected $retries;
 
-    private $module = '';
+    protected $module = '';
 
     /**
      * Create an instance for the VMWare API.
@@ -39,7 +39,7 @@ abstract class Api
     {
         $this->endpoint = $endpoint;
         $this->retries = $retries;
-	$this->module = $module;
+	    $this->module = $module;
 
         $this->client = new Client(array_merge([
             'base_uri' => $this->endpoint,
