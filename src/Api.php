@@ -85,7 +85,7 @@ abstract class Api
         return Middleware::mapRequest(function (RequestInterface $request) {
             $auth = $this->auth;
             if (!$auth) {
-                throw new VcenterException('You need to call "login" first.');
+                throw new VMWareException('You need to call "login" first.');
             }
             $authenticated = $auth['authenticated'];
             if (strpos($request->getUri()->getPath(), 'com/vmware/cis/session') === false) {
