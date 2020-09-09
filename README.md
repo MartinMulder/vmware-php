@@ -1,6 +1,7 @@
 # vmware-php
 
 A PHP wrapper for the VMWare API.
+This is a pre-alpha release, so stuf isn't working correctly atm.
 
 ## Installation
 ```
