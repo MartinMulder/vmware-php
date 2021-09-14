@@ -1,5 +1,5 @@
 {
-    "name": "ammarloo/vmware-api",
+    "name": "martinmulder/vmware-api",
     "description": "A PHP implementation for the VMWare API",
     "keywords": [
         "vmware",
