@@ -9,10 +9,10 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
+use MartinMulder\VMWare\Api;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-use MartinMulder\VMWare\Api;
 
 // Add the API traits
 use MartinMulder\VMWare\Endpoints\Vcenter\VM;
@@ -24,6 +24,7 @@ use MartinMulder\VMWare\Endpoints\Vcenter\Deployment;
 use MartinMulder\VMWare\Endpoints\Vcenter\Folder;
 use MartinMulder\VMWare\Endpoints\Vcenter\Guest;
 use MartinMulder\VMWare\Endpoints\Vcenter\Host;
+use MartinMulder\VMWare\Endpoints\Vcenter\Tag;
 use MartinMulder\VMWare\Endpoints\Vcenter\Resourcepool;
 
 class VcenterApi extends Api
@@ -40,7 +41,7 @@ class VcenterApi extends Api
      */
     public function __construct($endpoint = 'https://vcenter.local/rest/', $retries = 5, $guzzleOptions = [])
     {
-	parent::__construct($endpoint, self::CONNECT_MODULE, $retries, $guzzleOptions);
+        parent::__construct($endpoint, self::CONNECT_MODULE, $retries, $guzzleOptions);
     }
 
 
