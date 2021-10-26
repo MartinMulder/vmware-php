@@ -28,7 +28,7 @@ use MartinMulder\VMWare\Endpoints\Vcenter\Resourcepool;
 
 class VcenterApi extends Api
 {
-    use VM, Network, Datacenter, Cluster, Datastore, Deployment, Folder, Guest, Host, Resourcepool;
+    use VM, Network, Datacenter, Cluster, Datastore, Deployment, Folder, Guest, Host, Resourcepool,Tag;
 
     const CONNECT_MODULE = 'vcenter';
 
