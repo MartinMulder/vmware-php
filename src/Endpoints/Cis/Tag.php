@@ -32,11 +32,13 @@ trait Tag
     public function getListOfVmTagAssociations($id)
     {
         $json = '{
-    "object_id": [
-        "id":"' . $id . '",
-        "type": "string"
+    "object_ids": [
+        {
+            "id":"' . $id . '",
+            "type": "VirtualMachine"
+        }
     ]
 }';
-        return $this->request('POST', 'tagging/tag-association', array($json), ["~action" => "list-attached-tags"], array('Content-type: application/json'));
+        return $this->request('POST', 'tagging/tag-association', array($json), ["~action" => "list-attached-tags-on-objects"], array('Content-type: application/json'));
     }
 }
