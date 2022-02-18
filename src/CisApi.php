@@ -16,10 +16,11 @@ use Psr\Http\Message\ResponseInterface;
 
 // Add the API traits
 use MartinMulder\VMWare\Endpoints\Cis\Tag;
+use MartinMulder\VMWare\Endpoints\Cis\Category;
 
 class CisApi extends Api
 {
-    use Tag;
+    use Tag, Category;
 
     const CONNECT_MODULE = 'com/vmware/cis';
 
