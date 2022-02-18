@@ -39,6 +39,6 @@ trait Tag
         }
     ]
 }';
-        return $this->request('POST', 'tagging/tag-association', array($json), ["~action" => "list-attached-tags-on-objects"], array('Content-type: application/json'));
+        return $this->request('POST', 'tagging/tag-association', array(json_decode($json)), ["~action" => "list-attached-tags-on-objects"], array('Content-type: application/json'));
     }
 }
