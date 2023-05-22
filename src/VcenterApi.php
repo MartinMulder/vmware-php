@@ -35,11 +35,11 @@ class VcenterApi extends Api
 
     /**
      * Create an instance for the Vcenter API.
-     * @param string $endpoint Your API endpoint, that should end on "/rest/".
+     * @param string $endpoint Your API endpoint, that should end on "/api/".
      * @param integer $retries Number of retries for failed requests.
      * @param array $guzzleOptions Optional options to be passed to the Guzzle Client constructor.
      */
-    public function __construct($endpoint = 'https://vcenter.local/rest/', $retries = 5, $guzzleOptions = [])
+    public function __construct($endpoint = 'https://vcenter.local/api/', $retries = 5, $guzzleOptions = [])
     {
         parent::__construct($endpoint, self::CONNECT_MODULE, $retries, $guzzleOptions);
     }

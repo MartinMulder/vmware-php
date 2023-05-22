@@ -11,6 +11,7 @@ use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Sabre\DAV\Exception;
 
 
 abstract class Api
@@ -27,6 +28,9 @@ abstract class Api
     /** @var integer */
     protected $retries;
 
+    /** @var array */
+    protected $custom_headers=array('content-type' => 'application/json');
+
     protected $module = '';
 
     /**
@@ -35,11 +39,11 @@ abstract class Api
      * @param integer $retries Number of retries for failed requests.
      * @param array $guzzleOptions Optional options to be passed to the Guzzle Client constructor.
      */
-    public function __construct($endpoint = 'https://vcenter.local/rest/', $module,  $retries = 5, $guzzleOptions = [])
+    public function __construct($endpoint = 'https://vcenter.local/api/', $module,  $retries = 5, $guzzleOptions = [])
     {
         $this->endpoint = $endpoint;
         $this->retries = $retries;
-	    $this->module = $module;
+        $this->module = $module;
 
         $this->client = new Client(array_merge([
             'base_uri' => $this->endpoint,
@@ -52,6 +56,7 @@ abstract class Api
         $handler->unshift($this->cookieMiddleware());
         $handler->unshift($this->retryMiddleware());
         $handler->unshift($this->tokenMiddleware());
+
     }
 
 
@@ -68,14 +73,41 @@ abstract class Api
     public function login($username, $password)
     {
         $this->auth = [
-            'url' => 'com/vmware/cis/session',
+            'url' => 'session',
             'authenticated' => false,
             'username' => $username,
             'password' => $password
         ];
+        $auth = $this->auth;
+        //get token
+        $response = $this->client->request('POST', $auth['url'], [
+            'auth' => [$auth['username'], $auth['password']],
+            /*'debug' =>  true*/
+        ]);
+        $this->custom_headers['vmware-api-session-id'] = json_decode((string)$response->getBody()->getContents());
+        $auth['authenticated'] = true;
+        $this->auth = $auth;
+
         return $this;
     }
 
+    /**
+     * *Logout regularly using username/password combination.
+     * @return $this
+     */
+    public function logout()
+    {
+        if (isset($this->custom_headers['vmware-api-session-id']))
+            $token = $this->custom_headers['vmware-api-session-id'];
+        else throw new Exception('Can\'t logout: not connected');
+        $options = array(
+            'headers'=> $this->custom_headers,
+        );
+        //get token
+        $this->client->request('DELETE', $this->auth['url'],$options);
+        $this->auth['authenticated'] = false;
+        return $this;
+    }
     /**
      * Middleware: Adds correct authorization headers.
      * @return callable
@@ -88,15 +120,9 @@ abstract class Api
                 throw new VMWareException('You need to call "login" first.');
             }
             $authenticated = $auth['authenticated'];
-            if (strpos($request->getUri()->getPath(), 'com/vmware/cis/session') === false) {
+            if (strpos($request->getUri()->getPath(), 'session') === false) {
                 if ($authenticated === false) {
-                    // No token yet. Authenticate.
-                    $response = $this->client->request('POST', $auth['url'], [
-                        'auth' => [$auth['username'], $auth['password']],
-                    ]);
-                    // Save the cookiejar.
-                    $auth['authenticated'] = true;
-                    $this->auth = $auth;
+                    throw new VMWareException('You need to call "login" first.');
                 }
                 return $request;
             }
@@ -145,13 +171,17 @@ abstract class Api
      * @return mixed|ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    protected function request($method, $uri = '', array $json = [], array $query = [], array $options = [], $decode = true)
+    protected function request($method, $uri = '', array $json = [], array $query = [], array $headers = [], $decode = true)
     {
-        $response = $this->client->request($method, $this->module . "/" . $uri, array_merge([
-            'json' => $json,
-            'query' => $query
-        ], $options));
-
+        $options = array(
+            'headers'=> array_merge($this->custom_headers, $headers),
+            'query' => $query,
+            /*'debug' => true*/
+        );
+        if ($method=="POST"||$method=="PATCH"){
+            $options['json'] = $json;
+        }
+        $response = $this->client->request($method, $this->module . "/" . $uri, $options);
         return $decode ? json_decode((string)$response->getBody(), true) : (string)$response->getBody();
     }
 }

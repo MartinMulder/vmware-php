@@ -22,7 +22,7 @@ class InventoryApi extends Api
 {
     use Network, Datastore;
 
-    const CONNECT_MODULE = 'com/vmware/vcenter/inventory';
+    const CONNECT_MODULE = 'vcenter/inventory';
 
     /**
      * Create an instance for the Vcenter API.
@@ -30,9 +30,9 @@ class InventoryApi extends Api
      * @param integer $retries Number of retries for failed requests.
      * @param array $guzzleOptions Optional options to be passed to the Guzzle Client constructor.
      */
-    public function __construct($endpoint = 'https://vcenter.local/rest/', $retries = 5, $guzzleOptions = [])
+    public function __construct($endpoint = 'https://vcenter.local/api/', $retries = 5, $guzzleOptions = [])
     {
-	parent::__construct($endpoint, self::CONNECT_MODULE, $retries, $guzzleOptions);
+        parent::__construct($endpoint, self::CONNECT_MODULE, $retries, $guzzleOptions);
     }
 
 
