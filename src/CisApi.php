@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare;
+namespace enguerr\VMWare;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -9,14 +9,14 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
-use MartinMulder\VMWare\Api;
+use enguerr\VMWare\Api;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 
 // Add the API traits
-use MartinMulder\VMWare\Endpoints\Cis\Tag;
-use MartinMulder\VMWare\Endpoints\Cis\Category;
+use enguerr\VMWare\Endpoints\Cis\Tag;
+use enguerr\VMWare\Endpoints\Cis\Category;
 
 class CisApi extends Api
 {

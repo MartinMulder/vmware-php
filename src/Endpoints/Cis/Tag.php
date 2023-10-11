@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare\Endpoints\Cis;
+namespace enguerr\VMWare\Endpoints\Cis;
 
 trait Tag
 {

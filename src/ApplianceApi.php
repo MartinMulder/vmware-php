@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare;
+namespace enguerr\VMWare;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -12,10 +12,10 @@ use GuzzleHttp\Exception\ConnectException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-use MartinMulder\VMWare\Api;
+use enguerr\VMWare\Api;
 
 // Add the API traits
-use MartinMulder\VMWare\Endpoints\Appliance\Networking;
+use enguerr\VMWare\Endpoints\Appliance\Networking;
 
 class ApplianceApi extends Api
 {

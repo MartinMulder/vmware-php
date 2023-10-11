@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare\Endpoints\Vcenter;
+namespace enguerr\VMWare\Endpoints\Vcenter;
 
 trait Tag
 {

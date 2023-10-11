@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare;
+namespace enguerr\VMWare;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -12,11 +12,11 @@ use GuzzleHttp\Exception\ConnectException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-use MartinMulder\VMWare\Api;
+use enguerr\VMWare\Api;
 
 // Add the API traits
-use MartinMulder\VMWare\Endpoints\Inventory\Network;
-use MartinMulder\VMWare\Endpoints\Inventory\Datastore;
+use enguerr\VMWare\Endpoints\Inventory\Network;
+use enguerr\VMWare\Endpoints\Inventory\Datastore;
 
 class InventoryApi extends Api
 {

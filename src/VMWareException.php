@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare;
+namespace enguerr\VMWare;
 
 class VMWareException extends \Exception
 {
