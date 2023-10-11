@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare\Endpoints\Cis;
+namespace enguerr\VMWare\Endpoints\Cis;
 
 trait Category{
     public function editCategory($id,$name,$description='')

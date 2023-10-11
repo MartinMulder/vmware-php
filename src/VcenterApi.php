@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare;
+namespace enguerr\VMWare;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -9,23 +9,23 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
-use MartinMulder\VMWare\Api;
+use enguerr\VMWare\Api;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 
 // Add the API traits
-use MartinMulder\VMWare\Endpoints\Vcenter\VM;
-use MartinMulder\VMWare\Endpoints\Vcenter\Network;
-use MartinMulder\VMWare\Endpoints\Vcenter\Datacenter;
-use MartinMulder\VMWare\Endpoints\Vcenter\Cluster;
-use MartinMulder\VMWare\Endpoints\Vcenter\Datastore;
-use MartinMulder\VMWare\Endpoints\Vcenter\Deployment;
-use MartinMulder\VMWare\Endpoints\Vcenter\Folder;
-use MartinMulder\VMWare\Endpoints\Vcenter\Guest;
-use MartinMulder\VMWare\Endpoints\Vcenter\Host;
-use MartinMulder\VMWare\Endpoints\Vcenter\Tag;
-use MartinMulder\VMWare\Endpoints\Vcenter\Resourcepool;
+use enguerr\VMWare\Endpoints\Vcenter\VM;
+use enguerr\VMWare\Endpoints\Vcenter\Network;
+use enguerr\VMWare\Endpoints\Vcenter\Datacenter;
+use enguerr\VMWare\Endpoints\Vcenter\Cluster;
+use enguerr\VMWare\Endpoints\Vcenter\Datastore;
+use enguerr\VMWare\Endpoints\Vcenter\Deployment;
+use enguerr\VMWare\Endpoints\Vcenter\Folder;
+use enguerr\VMWare\Endpoints\Vcenter\Guest;
+use enguerr\VMWare\Endpoints\Vcenter\Host;
+use enguerr\VMWare\Endpoints\Vcenter\Tag;
+use enguerr\VMWare\Endpoints\Vcenter\Resourcepool;
 
 class VcenterApi extends Api
 {

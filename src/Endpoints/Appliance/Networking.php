@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare\Endpoints\Appliance;
+namespace enguerr\VMWare\Endpoints\Appliance;
 
 trait Networking
 {

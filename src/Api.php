@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare;
+namespace enguerr\VMWare;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;

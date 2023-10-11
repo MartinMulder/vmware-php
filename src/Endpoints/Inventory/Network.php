@@ -1,6 +1,6 @@
 <?php
 
-namespace MartinMulder\VMWare\Endpoints\Inventory;
+namespace enguerr\VMWare\Endpoints\Inventory;
 
 trait Network
 {

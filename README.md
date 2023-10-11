@@ -5,7 +5,7 @@ This is a pre-alpha release, so stuf isn't working correctly atm.
 
 ## Installation
 ```
-composer require martinmulder/vmware-api
+composer require enguerr/vmware-api
 ```
 
 ## Guide
@@ -17,7 +17,7 @@ Our VMWare API implementation contains the following features:
 
 ```php
 // Create a new API instance, endpoint should end on "/rest/".
-$api = new \MartinMulder\VMWare\[Vcenter|Appliance|Inventory]IApi('https://vcenter.local/rest/');
+$api = new \enguerr\VMWare\[Vcenter|Appliance|Inventory]IApi('https://vcenter.local/api/');
 ```
 
 ```php
@@ -35,4 +35,4 @@ foreach($vms as $vm) {
 ```
 
 ## Documentation
-- http://vmware.github.io/vsphere-automation-sdk-rest/6.5/
+- http://vmware.github.io/vsphere-automation-sdk-rest/7.0/
